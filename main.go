@@ -25,4 +25,12 @@ func main() {
 		panic(err)
 	}
 
+	// 开始定时任务
+	args := map[string]interface{}{
+		"name": "张三",
+	}
+	schedule := "* * * * *"
+	if err := wf.StartCron(context.Background(), schedule, "CronJob", args); err != nil {
+		panic(err)
+	}
 }

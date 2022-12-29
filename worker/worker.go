@@ -2,6 +2,7 @@ package main
 
 import (
 	"temporal_demo/activity"
+	"temporal_demo/cron"
 	pkgWorkflow "temporal_demo/pkg/workflow"
 	"temporal_demo/workflow"
 )
@@ -23,6 +24,9 @@ func main() {
 
 	// 注册workflow
 	worker.RegisterWorkflow(workflow.HandleStudent)
+
+	// 注册cronjob
+	worker.RegisterWorkflow(cron.CronJob)
 
 	if err := worker.Run(); err != nil {
 		panic(err)
